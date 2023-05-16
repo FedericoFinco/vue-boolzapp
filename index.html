@@ -56,10 +56,21 @@
             </div>
             <div class="conversation-messages">
                 <!-- creo una variabile che tiene i del for sopra (come nel carosello) e me la metto al posto di zero -->
-                <div  v-for="(message, i) in contacts[activeConversation].messages" class="message" :class="getMessageClass(i)">{{message.message}} </div>
+                <div  v-for="(message, i) in contacts[activeConversation].messages" class="message" :class="getMessageClass(i)" @mouseover="messageOptionsOn(i)" @mouseleave="messageOptionsOff(i)">
+                    {{message.message}}
+                    <i v-show="contacts[activeConversation].messages[i].MessageOptions || contacts[activeConversation].messages[i].MessageOptions== 'active'" @click="dropDownOn(i)" class="fa-solid fa-chevron-down"></i>
+                    <div v-show="contacts[activeConversation].messages[i].dropDown == 'active'" class="message-options"  @mouseleave="dropDownOff(i)">
+                        <p @click="deleteMessage(i)">elimina</p>
+                        <p>altra opzione</p>
+                        <p>altra opzione</p>
+                    </div> 
+                </div>
                 
             </div>
             <div class="new-message">
+                <i class="fa-regular fa-face-smile"></i>
+                <input type="text" v-model="newMessage.message" @keyUp.enter="addMessage" placeholder="Scrivi un messaggio"></input>
+                <i class="fa-solid fa-microphone"></i>
                 <!-- milestone 3 : per il messaggio inviato devo pushare nell'array messages un ogetto con testo, data, e status.
                 per la risposta automatica do un setTimeout che pusha nell'array con status recieved -->
             </div>

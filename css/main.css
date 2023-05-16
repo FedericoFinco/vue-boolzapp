@@ -136,6 +136,20 @@ body{
     height: var(--new-message-height);
     background-color: #DDD;
     border-left: solid 1px #CCC;
+    display: flex;
+    padding: 0.25rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.new-message input{
+    width: 87%;
+    border-radius: 5px;
+    border: none;
+}
+
+.new-message i{
+    font-size: 1.25rem;
 }
 
 .avatar{
@@ -150,6 +164,7 @@ body{
     width: auto;
     max-width: 300px;
     word-break: break-word;
+    position: relative;
 }
 
 .sent-message{
@@ -162,3 +177,23 @@ body{
     align-self: flex-start;
 }
 
+.message-options{
+    position: absolute;
+    width: 150px;
+    background-color: rgb(170, 177, 177);
+    padding: 0.25rem;
+    z-index: 999;
+    border-radius: 5px;
+}
+
+.received-message .message-options{
+    left: 80%;
+}
+
+.sent-message .message-options{
+    right: 5%;
+}
+
+.message-options p:hover{
+    background-color: rgb(138, 145, 145);
+}
