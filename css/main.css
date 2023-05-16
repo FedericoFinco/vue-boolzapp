@@ -1,0 +1,164 @@
+:root{
+    --profile-height: 66px;
+    --notification-height: 50px;
+    --search-height: 50px;
+    --new-message-height: 50px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    width: 100%;
+    background: rgb(0,150,136);
+    background: -moz-linear-gradient(180deg, rgba(0,150,136,1) 12%, rgba(218,219,212,1) 12%);
+    background: -webkit-linear-gradient(180deg, rgba(0,150,136,1) 12%, rgba(218,219,212,1) 12%);
+    background: linear-gradient(180deg, rgba(0,150,136,1) 12%, rgba(218,219,212,1) 12%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#009688",endColorstr="#dadbd4",GradientType=1);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* helpers */
+.container{
+    max-width: 1000px;
+    padding: 0;
+    margin: 0 auto;
+    background: white;
+    height: 100%;
+    display: flex;
+}
+
+
+/* specific css */
+.left{
+    width: 25%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+.profile{
+    height: var(--profile-height);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #DDD;
+}
+.profile-right{
+    display: flex;
+    align-items: center;
+}
+.profile-right > i{
+    font-size: 1.25rem;
+    padding: 0.5rem;
+}
+
+
+
+.profile-left{
+    display: flex;
+    align-items: center;
+}
+.profile-left > span{
+    padding-left: 0.5rem;
+}
+
+.notification{
+    height: var(--notification-height);
+    background-color: #DDD;
+}
+.search{
+    height: var(--search-height);
+    background-color: #DDD;
+}
+.contacts{
+    height: calc(100% - var(--profile-height) - var(--search-height) - var(--notification-height));
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.contact{
+    display: flex;
+}
+.contact-avatar{
+    padding: 0.25rem;
+}
+.contact-avatar > img{
+    display: block;
+}
+
+.contact:hover{
+    background-color: #EEEEEE;
+}
+
+.contacts .activeContact{
+    background-color: #E0E0E0;
+}
+
+
+.right{
+    width: 75%;
+    background-color: #DDD;
+    display: flex;
+    flex-direction: column;
+}
+
+.conversation-profile{
+    height: var(--profile-height);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #DDD;
+    border-left: solid 1px #CCC;
+}
+
+.propic-conversation{
+    display: flex;
+    align-items: center;
+}
+
+.conversation-messages{
+    height: calc(100% - var(--new-message-height) - var(--profile-height));
+    border-left: solid 1px #CCC;
+    background-image: url(../img/mine.jpg);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-message{
+    height: var(--new-message-height);
+    background-color: #DDD;
+    border-left: solid 1px #CCC;
+}
+
+.avatar{
+    height: 50px;
+    border-radius: 50%;
+}
+
+.message{
+    padding: 0.75rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    width: auto;
+    max-width: 300px;
+    word-break: break-word;
+}
+
+.sent-message{
+    background-color: green;
+    align-self: flex-end;
+}
+
+.received-message{
+    background-color: rgb(248, 246, 246);
+    align-self: flex-start;
+}
+

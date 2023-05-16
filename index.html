@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="container">
+
+        <div class="left">
+            <div class="profile">
+                <div class="profile-left">
+                    <img :src="currentUser.avatar" class="avatar" alt="">
+                    <span>{{currentUser.name}}</span>
+                </div>
+                <div class="profile-right">
+                    <!-- circle notch comment alt e elipsis -->
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+
+            </div>
+            <div class="notification">
+                aaaaa
+            </div>
+            <div class="search">
+                aaaaa
+            </div>
+            <div class="contacts">
+                <div class="contact" v-for="(contact, i) in contacts" @click="selezionaContatto(i)" :class="getContactClass(i)">
+                    <div class="contact-avatar">
+                        <img :src="contact.avatar" class="avatar" alt="">
+                    </div>
+                    <div class="contact-text">{{contact.name}}</div>
+                    <div class="contact-time">12:00</div>
+
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div class="right">
+            <div class="conversation-profile">
+                <div class="profile-left">
+                    <img :src="contacts[activeConversation].avatar" class="avatar" alt="">
+                    <span>{{contacts[activeConversation].name}}</span>
+                </div>
+            </div>
+            <div class="conversation-messages">
+                <!-- creo una variabile che tiene i del for sopra (come nel carosello) e me la metto al posto di zero -->
+                <div  v-for="(message, i) in contacts[activeConversation].messages" class="message" :class="getMessageClass(i)">{{message.message}} </div>
+                
+            </div>
+            <div class="new-message">
+                <!-- milestone 3 : per il messaggio inviato devo pushare nell'array messages un ogetto con testo, data, e status.
+                per la risposta automatica do un setTimeout che pusha nell'array con status recieved -->
+            </div>
+        </div>
+        <!-- https://www.youtube.com/watch?v=0TMy-5srdlA per la ricerca , oppure devo andare a lavorare sulla variabile visible dei contatti
+        e faccio il v-for per il visible. poi con la search devo fare in modo che se il carattere inserito non è presente nel nome allora 
+        visible = false. mi devo fare un metodoche cicla su tutti i contatti e cerca il carattere inserito nella search e cambia il visible
+        di chi non cell'ha (vedi la lezione del carosello quella che controllava se scrivevi la password per accedere ai ribbelli di
+        SW) -->
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
+<!-- WORD BREAK BREAK ALL o word wrap break all -->
+<!-- pewr la libreria del tempo serve una globale fuori da la parte di vue (o forse anche nei data) e una stringa per levare il bug
+di mezzanotte -->
+<!-- estensione utile per cose? remote development extension pack -->
+
+<!--     MILESTONE 3      per pusahre un messaggio inviato devo creare l'oggetto con status inviato, la data (o a mano o con luxon 
+consigliato su slack)
+ovviamente devo bindare li'npuit la sotto con una variabile, uso i dati per creare l'oggetto e lo pusho nell'array dei messaggi.
+per la risposta vado con setTimeout e faccio la stessa cosa: creo un oggettino e lo pusho nell'array però con status received e lo 
+sistemo nell metodo che prende il messaggio inviato -->
+
+<!--         MILESTONE 4        
+ricerca dei contatti. al keyup faccio metodo che recupera quello che è stato messo nell'imput bindato (v-data) e controllo con un
+includes se quello che è scritto nell'imput e contenuto nei nomi. se true utilizzo la variabile gia esistente visible per farlo
+vedere altrimenti gli do il false e con il v-if o i lv-show faccio in modo che si vedano in base appunto alla variabile visible.
+devo ricordarmi di fare se l'imput è vuoto allora visible a tutti.-->
+
+<!--        MILESTONE 5
+cancellazione del messaggio. con o senza menù a tendina, posso usare una x che cancella il messaggio (rimuoverlo dall'array).
+visualizzare l'ora e l'ultimo messaggio della conversazione a sx-->
+
+<!-- se voglio fare il bonus del microfono/freccia se il messaggio contiente testo userò trim per gli spazi e stringa vuota per messaggio
+nullo  -->
+
+
+<!-- per la scrollbar che segue puoi usare scroll to e dare un altezza che prendo con js vanilla ( x = get element by id). 
+    oppure posso usare scroll top. recuperato un elemento posso vedere quanti px di contenuto ha quindi devo farlo sul div che ha la
+scroll bar (x.scrollheight ???)-->
